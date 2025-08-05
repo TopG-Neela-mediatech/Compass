@@ -10,7 +10,7 @@ namespace TMKOC.Compass
 
         private void Start()
         {
-            RotateNeedle(NeedlePoints.NorthWest);
+            RotateNeedle(NeedlePoints.North);
         }
         public void RotateNeedle(NeedlePoints point)
         {

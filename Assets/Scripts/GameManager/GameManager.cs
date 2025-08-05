@@ -6,16 +6,18 @@ namespace TMKOC.Compass
     public class GameManager : MonoBehaviour
     {
         //[SerializeField] private UIManager uiManager;
-        //[SerializeField] private LevelManager levelManager;
+        [SerializeField] private LevelManager levelManager;
         //[SerializeField] private LivesManager livesManager;
         //[SerializeField] private SonuAnimationController sonuAnimationController;
         //[SerializeField] private ParticleEffectManager particleEffectManager;
         //[SerializeField] private SoundManager soundManager;
+        [SerializeField] private NeedleRotator needleRotator;
         private static GameManager instance;
 
 
         public static GameManager Instance { get { return instance; } }
-        //public LevelManager LevelManager { get { return levelManager; } }
+        public NeedleRotator NeedleRotator { get { return needleRotator; } }
+        public LevelManager LevelManager { get { return levelManager; } }
         //public UIManager UIManager { get { return uiManager; } }
         //public LivesManager LivesManager { get { return livesManager; } }
         //public SoundManager SoundManager { get { return soundManager; } }
