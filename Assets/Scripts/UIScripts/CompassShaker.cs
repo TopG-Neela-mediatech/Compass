@@ -21,7 +21,7 @@ namespace TMKOC.Compass
         private void ShakeCompass()
         {
             DisableCompassShakerButton();
-            compassT.DOShakePosition(2f, 0.5f).OnComplete(() =>
+            compassT.DOShakePosition(1.5f, 0.5f,5,45f).OnComplete(() =>
             {
                 EnableCompassShakerButton();
             });

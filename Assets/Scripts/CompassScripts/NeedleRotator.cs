@@ -37,18 +37,6 @@ namespace TMKOC.Compass
                 case NeedlePoints.SouthEast: return 135f;
                 default: return 0f;
             }
-        }
-        public enum NeedlePoints
-        {
-            None,
-            North,
-            South,
-            East,
-            West,
-            NorthWest,
-            NorthEast,
-            SouthWest,
-            SouthEast
-        }
+        }       
     }
 }

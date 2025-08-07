@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fade6898582f7044599acba6d4bf0323, type: 3}
+  m_Name: LevelSO
+  m_EditorClassIdentifier: 
+  levels:
+  - correctDirection: 1
+  - correctDirection: 2
+  - correctDirection: 3
+  - correctDirection: 4
+  - correctDirection: 5
+  - correctDirection: 6
+  - correctDirection: 7
+  - correctDirection: 8
