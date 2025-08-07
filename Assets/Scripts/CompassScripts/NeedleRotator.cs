@@ -10,7 +10,7 @@ namespace TMKOC.Compass
 
         private void Start()
         {
-            RotateNeedle(NeedlePoints.North);
+            RotateNeedle(GameManager.Instance.LevelManager.GetCorrectAnswer());
         }
         public void RotateNeedle(NeedlePoints point)
         {

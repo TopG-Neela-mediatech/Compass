@@ -17,18 +17,50 @@ namespace TMKOC.Compass
 
         private void Awake()
         {
-            ShuffleLevels(levels.levels);
+            ShuffleList(levels.levels);
         }
         private void Start()
         {
-            MoveButtonsOut();    
+            MoveButtonsOut();
             CurrentLevelIndex = 0;
-        }      
+            SetButtonData();
+        }
+        private void MoveButtonUP()
+        {
+            buttonParentT.DOLocalMoveY(0f, 1f);
+        }
+        private void SetButtonData()
+        {
+            List<NeedlePoints> options = new List<NeedlePoints>();
+            NeedlePoints correct = levels.levels[CurrentLevelIndex].correctDirection;
+            options.Add(correct);
+            List<NeedlePoints> allOthers = new List<NeedlePoints>();
+            foreach (var level in levels.levels)
+            {
+                if (!allOthers.Contains(level.correctDirection) && level.correctDirection != correct)
+                {
+                    allOthers.Add(level.correctDirection);
+                }
+            }
+            ShuffleList(allOthers);
+            for (int i = 0; i < Mathf.Min(3, allOthers.Count); i++)
+            {
+                options.Add(allOthers[i]);
+            }
+            ShuffleList(options);
+            for (int i = 0; i < optionButtons.Length; i++)
+            {
+                optionButtons[i].SetOptionButton(options[i].ToString(), options[i]);
+            }
+        }
         private void MoveButtonsOut()
         {
-            buttonParentT.DOLocalMoveY(-500f, 0f);
+            buttonParentT.DOLocalMoveY(-500f, 0f).OnComplete(() =>
+            {
+                MoveButtonUP();
+            });
         }
-        private void ShuffleLevels<T>(List<T> list)
+        private void ShuffleList<T>(List<T> list)
         {
             for (int i = list.Count - 1; i > 0; i--)
             {
