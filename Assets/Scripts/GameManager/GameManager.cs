@@ -5,7 +5,7 @@ namespace TMKOC.Compass
 {
     public class GameManager : MonoBehaviour
     {
-        //[SerializeField] private UIManager uiManager;
+        [SerializeField] private UIManager uiManager;
         [SerializeField] private LevelManager levelManager;
         //[SerializeField] private LivesManager livesManager;
         //[SerializeField] private SonuAnimationController sonuAnimationController;
@@ -18,7 +18,7 @@ namespace TMKOC.Compass
         public static GameManager Instance { get { return instance; } }
         public NeedleRotator NeedleRotator { get { return needleRotator; } }
         public LevelManager LevelManager { get { return levelManager; } }
-        //public UIManager UIManager { get { return uiManager; } }
+        public UIManager UIManager { get { return uiManager; } }
         //public LivesManager LivesManager { get { return livesManager; } }
         //public SoundManager SoundManager { get { return soundManager; } }
         //public SonuAnimationController SonuAnimationController { get { return sonuAnimationController; } }
@@ -42,13 +42,11 @@ namespace TMKOC.Compass
         public event Action OnLevelWin;
         public event Action OnLevelLose;
         public event Action OnLevelStart;
-        public event Action OnGameEnd;
 
 
         public void InvokeLevelStart() => OnLevelStart?.Invoke();
         public void InvokeLevelWin() => OnLevelWin?.Invoke();
         public void InvokeLevelLose() => OnLevelLose?.Invoke();
-        public void InvokeGameEnd() => OnGameEnd?.Invoke();
         #endregion
     }
 }

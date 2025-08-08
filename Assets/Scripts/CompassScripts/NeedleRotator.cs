@@ -10,6 +10,10 @@ namespace TMKOC.Compass
 
         private void Start()
         {
+            GameManager.Instance.OnLevelStart += OnLevelStart;
+        }
+        private void OnLevelStart()
+        {
             RotateNeedle(GameManager.Instance.LevelManager.GetCorrectAnswer());
         }
         public void RotateNeedle(NeedlePoints point)
@@ -37,6 +41,10 @@ namespace TMKOC.Compass
                 case NeedlePoints.SouthEast: return 135f;
                 default: return 0f;
             }
-        }       
+        }
+        private void OnDestroy()
+        {
+            GameManager.Instance.OnLevelStart -= OnLevelStart;
+        }
     }
 }

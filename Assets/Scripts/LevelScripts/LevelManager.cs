@@ -12,18 +12,35 @@ namespace TMKOC.Compass
         [SerializeField] private OptionManager[] optionButtons;
         private int CurrentLevelIndex;
 
-        public NeedlePoints GetCorrectAnswer() => levels.levels[CurrentLevelIndex].correctDirection;
+
+        public NeedlePoints GetCorrectAnswer() => levels.levels[CurrentLevelIndex].correctDirection; 
+        private void StartLevel()=>GameManager.Instance.InvokeLevelStart();
 
 
         private void Awake()
         {
             ShuffleList(levels.levels);
+            CurrentLevelIndex = 0;
         }
         private void Start()
+        {                                       
+            GameManager.Instance.OnLevelStart += OnLevelStart;
+            GameManager.Instance.OnLevelLose += OnLevelLose;
+            GameManager.Instance.OnLevelWin += OnLevelWin;
+            StartLevel();
+        }      
+        private void OnLevelStart()
+        {
+            SetButtonData();
+            MoveButtonUP();
+        }
+        private void OnLevelLose()
         {
             MoveButtonsOut();
-            CurrentLevelIndex = 0;
-            SetButtonData();
+        }
+        private void OnLevelWin()
+        {
+            MoveButtonsOut();
         }
         private void MoveButtonUP()
         {
@@ -51,14 +68,11 @@ namespace TMKOC.Compass
             for (int i = 0; i < optionButtons.Length; i++)
             {
                 optionButtons[i].SetOptionButton(options[i].ToString(), options[i]);
-            }
+            }         
         }
         private void MoveButtonsOut()
         {
-            buttonParentT.DOLocalMoveY(-500f, 0f).OnComplete(() =>
-            {
-                MoveButtonUP();
-            });
+            buttonParentT.DOLocalMoveY(-500f, 0f);
         }
         private void ShuffleList<T>(List<T> list)
         {
