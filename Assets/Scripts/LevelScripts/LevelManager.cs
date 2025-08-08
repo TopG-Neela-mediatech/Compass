@@ -27,7 +27,7 @@ namespace TMKOC.Compass
         }
         private void MoveButtonUP()
         {
-            buttonParentT.DOLocalMoveY(100f, 1f);
+            buttonParentT.DOLocalMoveY(0f, 1f);
         }
         private void SetButtonData()
         {
