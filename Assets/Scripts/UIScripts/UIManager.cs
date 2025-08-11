@@ -1,5 +1,6 @@
 using AssetKits.ParticleImage;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace TMKOC.Compass
@@ -11,7 +12,7 @@ namespace TMKOC.Compass
         [SerializeField] private GameObject losePanel;
         [SerializeField] private Button nextButton;
         [SerializeField] private Button restartButton;
-        [SerializeField] private Button palySchoolBackbutton;
+        [SerializeField] private Button playSchoolBackbutton;
 
 
         public void PlayConfetti() => confettiPreafab.Play();
@@ -23,6 +24,7 @@ namespace TMKOC.Compass
             GameManager.Instance.OnLevelLose += EnableLosePanel;
             nextButton.onClick.AddListener(LoadNextLevel);
             restartButton.onClick.AddListener(RestartLevel);
+            playSchoolBackbutton.onClick.AddListener(() => SceneManager.LoadScene(TMKOCPlaySchoolConstants.TMKOCPlayMainMenu));
         }
         private void EnableWinPanel()
         {

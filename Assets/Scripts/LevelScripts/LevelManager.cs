@@ -13,8 +13,8 @@ namespace TMKOC.Compass
         private int CurrentLevelIndex;
 
 
-        public NeedlePoints GetCorrectAnswer() => levels.levels[CurrentLevelIndex].correctDirection; 
-        public void StartLevel()=>GameManager.Instance.InvokeLevelStart();
+        public NeedlePoints GetCorrectAnswer() => levels.levels[CurrentLevelIndex].correctDirection;
+        public void StartLevel() => GameManager.Instance.InvokeLevelStart();
 
 
         private void Awake()
@@ -22,22 +22,28 @@ namespace TMKOC.Compass
             ShuffleList(levels.levels);
             CurrentLevelIndex = 0;
         }
-        public void StartNextLevel()
-        {
-            CurrentLevelIndex++;
-            if (CurrentLevelIndex >= levels.levels.Count)
-            {
-                CurrentLevelIndex = 0;
-            }
-            StartLevel();
-        }
         private void Start()
-        {                                       
+        {
             GameManager.Instance.OnLevelStart += OnLevelStart;
             GameManager.Instance.OnLevelLose += OnLevelLose;
             GameManager.Instance.OnLevelWin += OnLevelWin;
             StartLevel();
-        }      
+        }
+        public void StartNextLevel()
+        {
+            CurrentLevelIndex++;
+
+            if (CurrentLevelIndex >= levels.levels.Count)
+            {
+#if PLAYSCHOOL_MAIN
+                    EffectParticleControll.Instance.SpawnGameEndPanel();
+                    GameOverEndPanel.Instance.AddTheListnerRetryGame();
+                    return;
+#endif
+                CurrentLevelIndex = 0;
+            }
+            StartLevel();
+        }
         private void OnLevelStart()
         {
             SetButtonData();
@@ -77,7 +83,7 @@ namespace TMKOC.Compass
             for (int i = 0; i < optionButtons.Length; i++)
             {
                 optionButtons[i].SetOptionButton(options[i].ToString(), options[i]);
-            }         
+            }
         }
         private void MoveButtonsOut()
         {

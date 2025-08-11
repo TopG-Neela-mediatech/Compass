@@ -7,6 +7,7 @@ namespace TMKOC.Compass
     {
         [SerializeField] private UIManager uiManager;
         [SerializeField] private LevelManager levelManager;
+        [SerializeField] private CompassShaker cShaker;
         //[SerializeField] private LivesManager livesManager;
         //[SerializeField] private SonuAnimationController sonuAnimationController;
         //[SerializeField] private ParticleEffectManager particleEffectManager;
@@ -19,6 +20,7 @@ namespace TMKOC.Compass
         public NeedleRotator NeedleRotator { get { return needleRotator; } }
         public LevelManager LevelManager { get { return levelManager; } }
         public UIManager UIManager { get { return uiManager; } }
+        public CompassShaker CompassShaker { get { return cShaker; } }
         //public LivesManager LivesManager { get { return livesManager; } }
         //public SoundManager SoundManager { get { return soundManager; } }
         //public SonuAnimationController SonuAnimationController { get { return sonuAnimationController; } }

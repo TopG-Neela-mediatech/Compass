@@ -8,6 +8,7 @@ namespace TMKOC.Compass
     {
         [SerializeField] private Transform compassT;
         [SerializeField] private Button compassShakerButton;
+        private Tween tween;
 
 
         private void Start()
@@ -18,10 +19,14 @@ namespace TMKOC.Compass
         private void DisableCompassShakerButton() => compassShakerButton.enabled = false;
 
 
-        private void ShakeCompass()
+        public void ShakeCompass()
         {
+            if (tween != null)
+            {
+                tween.Kill();
+            }
             DisableCompassShakerButton();
-            compassT.DOShakePosition(1.5f, 0.5f,5,45f).OnComplete(() =>
+            tween = compassT.DOShakePosition(1.5f, 0.5f, 5, 45f).OnComplete(() =>
             {
                 EnableCompassShakerButton();
             });

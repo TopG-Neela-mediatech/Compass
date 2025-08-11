@@ -13,6 +13,7 @@ namespace TMKOC.Compass
         [SerializeField] private Image optionImage;
         private static event Action OnButtonPressed;
         private NeedlePoints value;
+        private Color startColor;
 
 
         private void DisableButton() => optionButton.enabled = false;
@@ -21,6 +22,7 @@ namespace TMKOC.Compass
 
         private void Start()
         {
+            startColor = optionImage.color;
             optionButton.onClick.AddListener(CheckIfCorrect);
             GameManager.Instance.OnLevelStart += OnLevelStart;
             OnButtonPressed += OnButtonClicked;
@@ -32,7 +34,7 @@ namespace TMKOC.Compass
         }
         private void ResetButton()
         {
-            optionImage.color = Color.white;
+            optionImage.color = startColor;
         }
         private void OnButtonClicked()
         {
@@ -57,15 +59,14 @@ namespace TMKOC.Compass
         {
             OnButtonPressed?.Invoke();
             if (value == GameManager.Instance.LevelManager.GetCorrectAnswer())
-            {
-                Debug.Log("Correct");
+            {                
                 optionImage.color = Color.green;
                 StartCoroutine(InvokeLevelWinAfterDelay());
                 GameManager.Instance.UIManager.PlayConfetti();
             }
             else
             {
-                Debug.Log("Incorrect");
+              GameManager.Instance.CompassShaker.ShakeCompass();
                 optionImage.color = Color.red;
                 StartCoroutine(InvokeLevelLoseAfterDelay());
             }
