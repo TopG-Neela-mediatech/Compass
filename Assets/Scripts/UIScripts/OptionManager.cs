@@ -28,6 +28,11 @@ namespace TMKOC.Compass
         private void OnLevelStart()
         {
             EnableButton();
+            ResetButton();
+        }
+        private void ResetButton()
+        {
+            optionImage.color = Color.white;
         }
         private void OnButtonClicked()
         {

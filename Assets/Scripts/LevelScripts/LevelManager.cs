@@ -14,13 +14,22 @@ namespace TMKOC.Compass
 
 
         public NeedlePoints GetCorrectAnswer() => levels.levels[CurrentLevelIndex].correctDirection; 
-        private void StartLevel()=>GameManager.Instance.InvokeLevelStart();
+        public void StartLevel()=>GameManager.Instance.InvokeLevelStart();
 
 
         private void Awake()
         {
             ShuffleList(levels.levels);
             CurrentLevelIndex = 0;
+        }
+        public void StartNextLevel()
+        {
+            CurrentLevelIndex++;
+            if (CurrentLevelIndex >= levels.levels.Count)
+            {
+                CurrentLevelIndex = 0;
+            }
+            StartLevel();
         }
         private void Start()
         {                                       
