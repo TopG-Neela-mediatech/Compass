@@ -63,6 +63,11 @@ namespace TMKOC.Compass
         {
             buttonParentT.DOLocalMoveY(0f, 1f).OnComplete(() =>
             {
+                if (pulseEffectTween != null)
+                {
+                    pulseEffectTween.Play();
+                    return;
+                }
                 pulseEffectTween = buttonParentT.DOScale(1.05f, 0.5f).SetLoops(-1, LoopType.Yoyo);
             });
         }
@@ -95,7 +100,7 @@ namespace TMKOC.Compass
         {
             if (pulseEffectTween != null)
             {
-                pulseEffectTween.Kill();
+                pulseEffectTween.Pause();
             }
             buttonParentT.DOLocalMoveY(-500f, 0f);
         }
