@@ -10,6 +10,7 @@ namespace TMKOC.Compass
         [SerializeField] private Transform buttonParentT;
         [SerializeField] private LevelSO levels;
         [SerializeField] private OptionManager[] optionButtons;
+        private Tween pulseEffectTween;
         private int CurrentLevelIndex;
 
 
@@ -27,6 +28,7 @@ namespace TMKOC.Compass
             GameManager.Instance.OnLevelStart += OnLevelStart;
             GameManager.Instance.OnLevelLose += OnLevelLose;
             GameManager.Instance.OnLevelWin += OnLevelWin;
+            MoveButtonsOut();
             StartLevel();
         }
         public void StartNextLevel()
@@ -59,8 +61,12 @@ namespace TMKOC.Compass
         }
         private void MoveButtonUP()
         {
-            buttonParentT.DOLocalMoveY(0f, 1f);
+            buttonParentT.DOLocalMoveY(0f, 1f).OnComplete(() =>
+            {
+                pulseEffectTween = buttonParentT.DOScale(1.05f, 0.5f).SetLoops(-1, LoopType.Yoyo);
+            });
         }
+
         private void SetButtonData()
         {
             List<NeedlePoints> options = new List<NeedlePoints>();
@@ -87,6 +93,10 @@ namespace TMKOC.Compass
         }
         private void MoveButtonsOut()
         {
+            if (pulseEffectTween != null)
+            {
+                pulseEffectTween.Kill();
+            }
             buttonParentT.DOLocalMoveY(-500f, 0f);
         }
         private void ShuffleList<T>(List<T> list)
