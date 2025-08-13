@@ -11,7 +11,7 @@ namespace TMKOC.Compass
         [SerializeField] private Button optionButton;
         [SerializeField] private TextMeshProUGUI optionText;
         [SerializeField] private Image optionImage;
-        private static event Action OnButtonPressed;
+        private static event Action OnButtonPressed;      
         private NeedlePoints value;
         private Color startColor;
 
@@ -25,7 +25,13 @@ namespace TMKOC.Compass
             startColor = optionImage.color;
             optionButton.onClick.AddListener(CheckIfCorrect);
             GameManager.Instance.OnLevelStart += OnLevelStart;
+            GameManager.Instance.LivesManager.OnLivesReducedAnimationOver += OnLivesAnimationOver;
             OnButtonPressed += OnButtonClicked;
+        }
+        private void OnLivesAnimationOver()
+        {
+            EnableButton();
+            optionImage.color = startColor;
         }
         private void OnLevelStart()
         {
@@ -50,31 +56,27 @@ namespace TMKOC.Compass
             yield return new WaitForSeconds(3f);
             GameManager.Instance.InvokeLevelWin();
         }
-        private IEnumerator InvokeLevelLoseAfterDelay()
-        {
-            yield return new WaitForSeconds(3f);
-            GameManager.Instance.InvokeLevelLose();
-        }
         private void CheckIfCorrect()
         {
             OnButtonPressed?.Invoke();
             if (value == GameManager.Instance.LevelManager.GetCorrectAnswer())
-            {                
+            {
                 optionImage.color = Color.green;
                 StartCoroutine(InvokeLevelWinAfterDelay());
                 GameManager.Instance.UIManager.PlayConfetti();
             }
             else
             {
-              GameManager.Instance.CompassShaker.ShakeCompass();
+                GameManager.Instance.CompassShaker.ShakeCompass();
                 optionImage.color = Color.red;
-                StartCoroutine(InvokeLevelLoseAfterDelay());
+                GameManager.Instance.LivesManager.ReduceLives();
             }
         }
         private void OnDestroy()
         {
             GameManager.Instance.OnLevelStart -= OnLevelStart;
             OnButtonPressed -= OnButtonClicked;
+            GameManager.Instance.LivesManager.OnLivesReducedAnimationOver -= OnLivesAnimationOver;
         }
     }
 }

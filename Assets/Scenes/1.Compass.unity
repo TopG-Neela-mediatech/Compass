@@ -1507,6 +1507,7 @@ MonoBehaviour:
   uiManager: {fileID: 1781808123}
   levelManager: {fileID: 1388382397}
   cShaker: {fileID: 1808765292}
+  livesManager: {fileID: 1206674346}
   needleRotator: {fileID: 1271578722}
 --- !u!1 &737007439
 GameObject:
@@ -2033,7 +2034,7 @@ GameObject:
   m_Component:
   - component: {fileID: 822156875}
   - component: {fileID: 822156877}
-  - component: {fileID: 822156876}
+  - component: {fileID: 822156878}
   m_Layer: 5
   m_Name: BG
   m_TagString: Untagged
@@ -2057,10 +2058,18 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 25, y: 0}
+  m_SizeDelta: {x: 50, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &822156876
+--- !u!222 &822156877
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822156874}
+  m_CullTransparentMesh: 1
+--- !u!114 &822156878
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2090,14 +2099,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!222 &822156877
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 822156874}
-  m_CullTransparentMesh: 1
 --- !u!1001 &832977628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2665,6 +2666,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1180568217}
   m_CullTransparentMesh: 1
+--- !u!1 &1206674344
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1206674345}
+  - component: {fileID: 1206674346}
+  m_Layer: 0
+  m_Name: LivesManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1206674345
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206674344}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1927533327}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1206674346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206674344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03d651097cc013e4bbf97e2c43d1adc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heartImageT: {fileID: 1269619782}
+  livestext: {fileID: 154178282}
 --- !u!1 &1211384914
 GameObject:
   m_ObjectHideFlags: 0
@@ -3772,6 +3819,7 @@ Transform:
   - {fileID: 1388382396}
   - {fileID: 1808765291}
   - {fileID: 1781808122}
+  - {fileID: 1206674345}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2006532107
