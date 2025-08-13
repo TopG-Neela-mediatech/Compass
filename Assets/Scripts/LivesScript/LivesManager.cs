@@ -21,7 +21,7 @@ namespace TMKOC.Compass
         }
         private void ShakeLives()
         {
-            heartImageT.DOShakePosition(1f, 10, 10).OnComplete(() =>
+            heartImageT.DOShakePosition(1f, 20, 10).OnComplete(() =>
             {
                 if (lives == 0)
                 {
