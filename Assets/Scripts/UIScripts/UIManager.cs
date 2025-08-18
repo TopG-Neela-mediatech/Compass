@@ -8,9 +8,9 @@ namespace TMKOC.Compass
     public class UIManager : MonoBehaviour
     {
         [SerializeField] private ParticleImage confettiPreafab;
-        [SerializeField] private GameObject winPanel;
+        //[SerializeField] private GameObject winPanel;
         [SerializeField] private GameObject losePanel;
-        [SerializeField] private Button nextButton;
+        //[SerializeField] private Button nextButton;
         [SerializeField] private Button restartButton;
         [SerializeField] private Button playSchoolBackbutton;
 
@@ -22,26 +22,26 @@ namespace TMKOC.Compass
         {
             GameManager.Instance.OnLevelWin += EnableWinPanel;
             GameManager.Instance.OnLevelLose += EnableLosePanel;
-            nextButton.onClick.AddListener(LoadNextLevel);
+           // nextButton.onClick.AddListener(LoadNextLevel);
             restartButton.onClick.AddListener(RestartLevel);
             playSchoolBackbutton.onClick.AddListener(() => SceneManager.LoadScene(TMKOCPlaySchoolConstants.TMKOCPlayMainMenu));
         }
         private void EnableWinPanel()
         {
-            winPanel.SetActive(true);
-            nextButton.enabled = true;
+           // winPanel.SetActive(true);
+           // nextButton.enabled = true;
         }
         private void EnableLosePanel()
         {
             restartButton.enabled = true;
             losePanel.SetActive(true);
         }
-        private void LoadNextLevel()
+        /*private void LoadNextLevel()
         {
             nextButton.enabled = false;
             DisablePanels();
             GameManager.Instance.LevelManager.StartNextLevel();
-        }
+        }*/
         private void RestartLevel()
         {
             restartButton.enabled = false;
@@ -50,7 +50,7 @@ namespace TMKOC.Compass
         }
         private void DisablePanels()
         {
-            winPanel.SetActive(false);
+            //winPanel.SetActive(false);
             losePanel.SetActive(false);
         }
         private void OnDestroy()

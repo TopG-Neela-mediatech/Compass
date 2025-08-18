@@ -1,6 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 
 namespace TMKOC.Compass
@@ -58,6 +59,12 @@ namespace TMKOC.Compass
         private void OnLevelWin()
         {
             MoveButtonsOut();
+            StartCoroutine(LoadNextLevelAfterDelay());
+        }
+        private IEnumerator LoadNextLevelAfterDelay()
+        {
+            yield return new WaitForSeconds(2f);
+            StartNextLevel();
         }
         private void MoveButtonUP()
         {
