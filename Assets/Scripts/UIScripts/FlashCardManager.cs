@@ -1,8 +1,9 @@
 using DG.Tweening;
 using System.Collections;
-using UnityEditor.ShaderGraph;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
 
 namespace TMKOC.Compass
 {
@@ -12,6 +13,7 @@ namespace TMKOC.Compass
         [SerializeField] private Image flashCardImage;
         [SerializeField] private Sprite[] directionSprite;
         [SerializeField] private Transform needleImageTransform;
+        [SerializeField] private TextMeshProUGUI directionNametext;
         [SerializeField] private Button nextButton;
         private int index;
 
@@ -19,14 +21,15 @@ namespace TMKOC.Compass
         private void Start()
         {
             index = 0;
-            RotateNeedle(GetNeedlePoint(index+1));
+            RotateNeedle(GetNeedlePoint(index + 1));
             flashCardImage.sprite = directionSprite[index];
             nextButton.onClick.AddListener(LoadNextSprite);
         }
         private NeedlePoints GetNeedlePoint(int val)
         {
-           return (NeedlePoints)val;
-        } 
+            directionNametext.text = ((NeedlePoints)val).ToString();
+            return (NeedlePoints)val;
+        }
         private void LoadNextSprite()
         {
             nextButton.enabled = false;
@@ -36,10 +39,10 @@ namespace TMKOC.Compass
                 GameManager.Instance.LevelManager.StartLevel();
                 flashCardParent.SetActive(false);
                 return;
-            }           
+            }
             StartCoroutine(EnableNextButtonAfterDelay());
             flashCardImage.sprite = directionSprite[index];
-            RotateNeedle(GetNeedlePoint(index+1));
+            RotateNeedle(GetNeedlePoint(index + 1));
         }
         private IEnumerator EnableNextButtonAfterDelay()
         {
