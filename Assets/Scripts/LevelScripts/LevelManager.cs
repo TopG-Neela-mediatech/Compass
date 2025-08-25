@@ -30,7 +30,7 @@ namespace TMKOC.Compass
             GameManager.Instance.OnLevelLose += OnLevelLose;
             GameManager.Instance.OnLevelWin += OnLevelWin;
             MoveButtonsOut();
-            StartLevel();
+            //StartLevel();
         }
         public void StartNextLevel()
         {
