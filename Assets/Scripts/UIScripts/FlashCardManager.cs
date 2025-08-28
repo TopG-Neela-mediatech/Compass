@@ -15,6 +15,7 @@ namespace TMKOC.Compass
         [SerializeField] private Transform needleImageTransform;
         [SerializeField] private TextMeshProUGUI directionNametext;
         [SerializeField] private Button nextButton;
+        [SerializeField] private Button prevButton;
         private int index;
 
 
@@ -24,6 +25,7 @@ namespace TMKOC.Compass
             RotateNeedle(GetNeedlePoint(index + 1));
             flashCardImage.sprite = directionSprite[index];
             nextButton.onClick.AddListener(LoadNextSprite);
+            prevButton.onClick.AddListener(LoadPrevSprite);
         }
         private NeedlePoints GetNeedlePoint(int val)
         {
@@ -43,6 +45,25 @@ namespace TMKOC.Compass
             StartCoroutine(EnableNextButtonAfterDelay());
             flashCardImage.sprite = directionSprite[index];
             RotateNeedle(GetNeedlePoint(index + 1));
+        }
+        private void LoadPrevSprite()
+        {
+            prevButton.enabled = false;
+            if (index <= 0)
+            {
+                index = 0;
+                StartCoroutine(EnablePrevButtonAfterDelay());
+                return;
+            }
+            index--;
+            StartCoroutine(EnablePrevButtonAfterDelay());
+            flashCardImage.sprite = directionSprite[index];
+            RotateNeedle(GetNeedlePoint(index + 1));
+        }
+        private IEnumerator EnablePrevButtonAfterDelay()
+        {
+            yield return new WaitForSeconds(3f);
+            prevButton.enabled = true;
         }
         private IEnumerator EnableNextButtonAfterDelay()
         {
