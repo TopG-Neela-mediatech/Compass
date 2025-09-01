@@ -3783,7 +3783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashCardParent: {fileID: 477521930}
   flashCardImage: {fileID: 1196435341}
-  aspectRatioThreshold: 0.45
+  aspectRatioThreshold: 0.5
   directionSprite:
   - {fileID: 21300000, guid: d2654435dc1f0d940811501ff90c3452, type: 3}
   - {fileID: 21300000, guid: f3acd19166c8b5e48aed084cfec1cfb7, type: 3}
