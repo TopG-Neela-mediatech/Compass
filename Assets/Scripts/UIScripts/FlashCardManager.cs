@@ -28,6 +28,16 @@ namespace TMKOC.Compass
             nextButton.onClick.AddListener(LoadNextSprite);
             prevButton.onClick.AddListener(LoadPrevSprite);
         }
+        private void DisableButtons()
+        {
+            nextButton.enabled = false;
+            prevButton.enabled = false;
+        }
+        private void EnableButtons()
+        {
+            nextButton.enabled = true;
+            prevButton.enabled = true;
+        }
         private NeedlePoints GetNeedlePoint(int val)
         {
             directionNametext.text = ((NeedlePoints)val).ToString();
@@ -35,7 +45,7 @@ namespace TMKOC.Compass
         }
         private void LoadNextSprite()
         {
-            nextButton.enabled = false;
+            DisableButtons();
             index++;
             if (index >= directionSprite.Length)
             {
@@ -43,35 +53,30 @@ namespace TMKOC.Compass
                 flashCardParent.SetActive(false);
                 return;
             }
-            StartCoroutine(EnableNextButtonAfterDelay());
+            StartCoroutine(EnableButtonAfterDelay());
             flashCardImage.sprite = directionSprite[index];
             starEffect.Play();
             RotateNeedle(GetNeedlePoint(index + 1));
         }
         private void LoadPrevSprite()
         {
-            prevButton.enabled = false;
+            DisableButtons();
             if (index <= 0)
             {
                 index = 0;
-                StartCoroutine(EnablePrevButtonAfterDelay());
+                StartCoroutine(EnableButtonAfterDelay());
                 return;
             }
             index--;
-            StartCoroutine(EnablePrevButtonAfterDelay());
+            StartCoroutine(EnableButtonAfterDelay());
             flashCardImage.sprite = directionSprite[index];
             RotateNeedle(GetNeedlePoint(index + 1));
             starEffect.Play();
         }
-        private IEnumerator EnablePrevButtonAfterDelay()
-        {            
+        private IEnumerator EnableButtonAfterDelay()
+        {
             yield return new WaitForSeconds(3f);
-            prevButton.enabled = true;
-        }
-        private IEnumerator EnableNextButtonAfterDelay()
-        {           
-            yield return new WaitForSeconds(3f);
-            nextButton.enabled = true;
+            EnableButtons();
         }
         public void RotateNeedle(NeedlePoints point)
         {
@@ -79,7 +84,7 @@ namespace TMKOC.Compass
             int fullRotations = 3;
             float currentZ = needleImageTransform.localEulerAngles.z;
             float delta = (targetAngle - currentZ + 360f) % 360f;
-            float totalAngle = currentZ + delta + 360f * fullRotations;            
+            float totalAngle = currentZ + delta + 360f * fullRotations;
             needleImageTransform
                 .DOLocalRotate(new Vector3(0f, 0f, -totalAngle), 2f, RotateMode.FastBeyond360)
                 .SetEase(Ease.OutQuad);
