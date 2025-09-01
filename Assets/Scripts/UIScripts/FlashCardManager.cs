@@ -13,6 +13,7 @@ namespace TMKOC.Compass
         [SerializeField] private Image flashCardImage;
         [SerializeField] private Sprite[] directionSprite;
         [SerializeField] private Transform needleImageTransform;
+        [SerializeField] private Transform frameImageT;
         [SerializeField] private TextMeshProUGUI directionNametext;
         [SerializeField] private Button nextButton;
         [SerializeField] private Button prevButton;
@@ -27,15 +28,16 @@ namespace TMKOC.Compass
             flashCardImage.sprite = directionSprite[index];
             nextButton.onClick.AddListener(LoadNextSprite);
             prevButton.onClick.AddListener(LoadPrevSprite);
-            DoFlashCardAnimation();
+            DoFlashCardAnimation(false);
             DisableButtons();
         }
-        private void DoFlashCardAnimation()
+        private void DoFlashCardAnimation(bool prev)
         {
             DisableButtons();
-            flashCardImage.transform.DOScale(0f, 0).OnComplete(() =>
+            float val = prev ? -1200f : 1200f;
+            frameImageT.DOLocalMoveX(val, 0).OnComplete(() =>
             {
-                flashCardImage.transform.DOScale(1f, 1.5f).OnComplete(() =>
+               frameImageT.DOLocalMoveX(0f, 1.5f).OnComplete(() =>
                 {
                     DOVirtual.DelayedCall(0.5f, EnableButtons);
                 }
@@ -67,7 +69,7 @@ namespace TMKOC.Compass
         }
         private void LoadNextSprite()
         {
-            DoFlashCardAnimation();
+            DoFlashCardAnimation(false);
             index++;
             if (index >= directionSprite.Length)
             {
@@ -86,7 +88,7 @@ namespace TMKOC.Compass
                 index = 0;
                 return;
             }
-            DoFlashCardAnimation();
+            DoFlashCardAnimation(true);
             index--;
             flashCardImage.sprite = directionSprite[index];
             RotateNeedle(GetNeedlePoint(index + 1));
