@@ -27,6 +27,20 @@ namespace TMKOC.Compass
             flashCardImage.sprite = directionSprite[index];
             nextButton.onClick.AddListener(LoadNextSprite);
             prevButton.onClick.AddListener(LoadPrevSprite);
+            DoFlashCardAnimation();
+            DisableButtons();
+        }
+        private void DoFlashCardAnimation()
+        {
+            DisableButtons();
+            flashCardImage.transform.DOScale(0f, 0).OnComplete(() =>
+            {
+                flashCardImage.transform.DOScale(1f, 1.5f).OnComplete(() =>
+                {
+                    EnableButtons();
+                }               
+                );
+            });
         }
         private void DisableButtons()
         {
@@ -45,7 +59,8 @@ namespace TMKOC.Compass
         }
         private void LoadNextSprite()
         {
-            DisableButtons();
+            DoFlashCardAnimation();
+           // DisableButtons();
             index++;
             if (index >= directionSprite.Length)
             {
@@ -53,31 +68,32 @@ namespace TMKOC.Compass
                 flashCardParent.SetActive(false);
                 return;
             }
-            StartCoroutine(EnableButtonAfterDelay());
+            //StartCoroutine(EnableButtonAfterDelay());
             flashCardImage.sprite = directionSprite[index];
             starEffect.Play();
             RotateNeedle(GetNeedlePoint(index + 1));
         }
         private void LoadPrevSprite()
         {
-            DisableButtons();
+            DoFlashCardAnimation();
+           // DisableButtons();
             if (index <= 0)
             {
                 index = 0;
-                StartCoroutine(EnableButtonAfterDelay());
+                //StartCoroutine(EnableButtonAfterDelay());
                 return;
             }
             index--;
-            StartCoroutine(EnableButtonAfterDelay());
+            //StartCoroutine(EnableButtonAfterDelay());
             flashCardImage.sprite = directionSprite[index];
             RotateNeedle(GetNeedlePoint(index + 1));
             starEffect.Play();
         }
-        private IEnumerator EnableButtonAfterDelay()
+        /*private IEnumerator EnableButtonAfterDelay()
         {
             yield return new WaitForSeconds(3f);
             EnableButtons();
-        }
+        }*/
         public void RotateNeedle(NeedlePoints point)
         {
             float targetAngle = GetPositiveAngle(point);
@@ -86,7 +102,7 @@ namespace TMKOC.Compass
             float delta = (targetAngle - currentZ + 360f) % 360f;
             float totalAngle = currentZ + delta + 360f * fullRotations;
             needleImageTransform
-                .DOLocalRotate(new Vector3(0f, 0f, -totalAngle), 2f, RotateMode.FastBeyond360)
+                .DOLocalRotate(new Vector3(0f, 0f, -totalAngle), 1f, RotateMode.FastBeyond360)
                 .SetEase(Ease.OutQuad);
         }
         private float GetPositiveAngle(NeedlePoints point)
