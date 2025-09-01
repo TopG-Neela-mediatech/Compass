@@ -38,7 +38,7 @@ namespace TMKOC.Compass
                 flashCardImage.transform.DOScale(1f, 1.5f).OnComplete(() =>
                 {
                     EnableButtons();
-                }               
+                }
                 );
             });
         }
@@ -60,7 +60,6 @@ namespace TMKOC.Compass
         private void LoadNextSprite()
         {
             DoFlashCardAnimation();
-           // DisableButtons();
             index++;
             if (index >= directionSprite.Length)
             {
@@ -68,32 +67,23 @@ namespace TMKOC.Compass
                 flashCardParent.SetActive(false);
                 return;
             }
-            //StartCoroutine(EnableButtonAfterDelay());
             flashCardImage.sprite = directionSprite[index];
             starEffect.Play();
             RotateNeedle(GetNeedlePoint(index + 1));
         }
         private void LoadPrevSprite()
         {
-            DoFlashCardAnimation();
-           // DisableButtons();
             if (index <= 0)
             {
                 index = 0;
-                //StartCoroutine(EnableButtonAfterDelay());
                 return;
             }
+            DoFlashCardAnimation();
             index--;
-            //StartCoroutine(EnableButtonAfterDelay());
             flashCardImage.sprite = directionSprite[index];
             RotateNeedle(GetNeedlePoint(index + 1));
             starEffect.Play();
         }
-        /*private IEnumerator EnableButtonAfterDelay()
-        {
-            yield return new WaitForSeconds(3f);
-            EnableButtons();
-        }*/
         public void RotateNeedle(NeedlePoints point)
         {
             float targetAngle = GetPositiveAngle(point);
@@ -120,5 +110,10 @@ namespace TMKOC.Compass
                 default: return 0f;
             }
         }
+        /*private IEnumerator EnableButtonAfterDelay()
+        {
+            yield return new WaitForSeconds(3f);
+            EnableButtons();
+        }*/
     }
 }
