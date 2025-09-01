@@ -11,8 +11,10 @@ namespace TMKOC.Compass
     {
         [SerializeField] private GameObject flashCardParent;
         [SerializeField] private Image flashCardImage;
+        [SerializeField] private float aspectRatioThreshold = 0.5f;//for portrait
         [SerializeField] private Sprite[] directionSprite;
         [SerializeField] private Transform needleImageTransform;
+        [SerializeField] private Transform compassParentT;
         [SerializeField] private Transform frameImageT;
         [SerializeField] private TextMeshProUGUI directionNametext;
         [SerializeField] private Button nextButton;
@@ -21,6 +23,10 @@ namespace TMKOC.Compass
         private int index;
 
 
+        private void Awake()
+        {
+            AdjustSize();
+        }
         private void Start()
         {
             index = 0;
@@ -31,17 +37,31 @@ namespace TMKOC.Compass
             DoFlashCardAnimation(false);
             DisableButtons();
         }
+        private void AdjustSize()
+        {
+            float aspectRatio = (float)Screen.width / Screen.height;           
+            if (aspectRatio > aspectRatioThreshold)//greater here because portrait
+            {
+                SetTabletSizing();
+                return;
+            }
+        }
+        private void SetTabletSizing()
+        {
+            compassParentT.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+            frameImageT.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+        }
         private void DoFlashCardAnimation(bool prev)
         {
             DisableButtons();
             float val = prev ? -1200f : 1200f;
             frameImageT.DOLocalMoveX(val, 0).OnComplete(() =>
             {
-               frameImageT.DOLocalMoveX(0f, 1.5f).OnComplete(() =>
-                {
-                    DOVirtual.DelayedCall(0.5f, EnableButtons);
-                }
-                );
+                frameImageT.DOLocalMoveX(0f, 1.5f).OnComplete(() =>
+                 {
+                     DOVirtual.DelayedCall(0.5f, EnableButtons);
+                 }
+                 );
             });
         }
         private void DisableButtons()
