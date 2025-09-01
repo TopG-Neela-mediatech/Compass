@@ -16,6 +16,7 @@ namespace TMKOC.Compass
         [SerializeField] private TextMeshProUGUI directionNametext;
         [SerializeField] private Button nextButton;
         [SerializeField] private Button prevButton;
+        [SerializeField] private ParticleSystem starEffect;
         private int index;
 
 
@@ -44,6 +45,7 @@ namespace TMKOC.Compass
             }
             StartCoroutine(EnableNextButtonAfterDelay());
             flashCardImage.sprite = directionSprite[index];
+            starEffect.Play();
             RotateNeedle(GetNeedlePoint(index + 1));
         }
         private void LoadPrevSprite()
@@ -59,14 +61,15 @@ namespace TMKOC.Compass
             StartCoroutine(EnablePrevButtonAfterDelay());
             flashCardImage.sprite = directionSprite[index];
             RotateNeedle(GetNeedlePoint(index + 1));
+            starEffect.Play();
         }
         private IEnumerator EnablePrevButtonAfterDelay()
-        {
+        {            
             yield return new WaitForSeconds(3f);
             prevButton.enabled = true;
         }
         private IEnumerator EnableNextButtonAfterDelay()
-        {
+        {           
             yield return new WaitForSeconds(3f);
             nextButton.enabled = true;
         }
@@ -76,7 +79,7 @@ namespace TMKOC.Compass
             int fullRotations = 3;
             float currentZ = needleImageTransform.localEulerAngles.z;
             float delta = (targetAngle - currentZ + 360f) % 360f;
-            float totalAngle = currentZ + delta + 360f * fullRotations;
+            float totalAngle = currentZ + delta + 360f * fullRotations;            
             needleImageTransform
                 .DOLocalRotate(new Vector3(0f, 0f, -totalAngle), 2f, RotateMode.FastBeyond360)
                 .SetEase(Ease.OutQuad);
