@@ -37,7 +37,7 @@ namespace TMKOC.Compass
             {
                 flashCardImage.transform.DOScale(1f, 1.5f).OnComplete(() =>
                 {
-                    EnableButtons();
+                    DOVirtual.DelayedCall(0.5f, EnableButtons);
                 }
                 );
             });
@@ -55,7 +55,15 @@ namespace TMKOC.Compass
         private NeedlePoints GetNeedlePoint(int val)
         {
             directionNametext.text = ((NeedlePoints)val).ToString();
+            DoTextAnimation();
             return (NeedlePoints)val;
+        }
+        private void DoTextAnimation()
+        {
+            directionNametext.DOFade(0f, 0f).OnComplete(() =>
+            {
+                directionNametext.DOFade(1f, 2f);
+            });
         }
         private void LoadNextSprite()
         {
