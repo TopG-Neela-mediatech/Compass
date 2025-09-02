@@ -2,6 +2,7 @@ using DG.Tweening;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using TMPro;
 
 
 namespace TMKOC.Compass
@@ -11,6 +12,8 @@ namespace TMKOC.Compass
         [SerializeField] private Transform buttonParentT;
         [SerializeField] private LevelSO levels;
         [SerializeField] private OptionManager[] optionButtons;
+        [SerializeField] private Transform questionNumberParent;
+        [SerializeField] private TextMeshProUGUI questionNumberText;
         private Tween pulseEffectTween;
         private int CurrentLevelIndex;
 
@@ -30,11 +33,11 @@ namespace TMKOC.Compass
             GameManager.Instance.OnLevelLose += OnLevelLose;
             GameManager.Instance.OnLevelWin += OnLevelWin;
             MoveButtonsOut();
+            MoveQuestionTextOut();
         }
         public void StartNextLevel()
         {
             CurrentLevelIndex++;
-
             if (CurrentLevelIndex >= levels.levels.Count)
             {
 #if PLAYSCHOOL_MAIN
@@ -50,14 +53,31 @@ namespace TMKOC.Compass
         {
             SetButtonData();
             MoveButtonUP();
+            SetQuestionNumberText();
+            MoveQuestionTextOut();
+            MoveQuestionTextIn();
+        }
+        private void SetQuestionNumberText()
+        {
+            questionNumberText.text = "Question " + (CurrentLevelIndex + 1);
         }
         private void OnLevelLose()
         {
+            MoveQuestionTextOut();
             MoveButtonsOut();
+        }
+        private void MoveQuestionTextIn()
+        {
+            questionNumberParent.DOLocalMoveY(750f, 1f);
+        }
+        private void MoveQuestionTextOut()
+        {
+            questionNumberParent.DOLocalMoveY(1200f, 0f);
         }
         private void OnLevelWin()
         {
             MoveButtonsOut();
+            MoveQuestionTextOut();
             StartCoroutine(LoadNextLevelAfterDelay());
         }
         private IEnumerator LoadNextLevelAfterDelay()

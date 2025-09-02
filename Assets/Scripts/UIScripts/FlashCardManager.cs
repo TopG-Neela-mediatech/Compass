@@ -29,7 +29,7 @@ namespace TMKOC.Compass
         }
         private void Start()
         {
-            index = 0;
+            index = 7;
             RotateNeedle(GetNeedlePoint(index + 1));
             flashCardImage.sprite = directionSprite[index];
             nextButton.onClick.AddListener(LoadNextSprite);
