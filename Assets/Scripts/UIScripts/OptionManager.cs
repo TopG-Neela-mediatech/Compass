@@ -53,7 +53,7 @@ namespace TMKOC.Compass
         }
         private IEnumerator InvokeLevelWinAfterDelay()
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(2f);
             GameManager.Instance.InvokeLevelWin();
         }
         private void CheckIfCorrect()
@@ -71,6 +71,7 @@ namespace TMKOC.Compass
                 GameManager.Instance.CompassShaker.ShakeCompass();
                 optionImage.color = Color.red;
                 GameManager.Instance.LivesManager.ReduceLives();
+                GameManager.Instance.SoundManager.PlayInCorrectAudio();
             }
         }
         private void OnDestroy()

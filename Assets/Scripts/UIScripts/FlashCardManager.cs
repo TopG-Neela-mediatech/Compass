@@ -44,7 +44,7 @@ namespace TMKOC.Compass
             prevButton.gameObject.SetActive(false);
             nextButton.gameObject.SetActive(false);
             frameImageT.DOLocalMoveX(-1200f, 0f);
-            float duration = GameManager.Instance.SoundManager.PlayIntro();
+            float duration = (GameManager.Instance.SoundManager.PlayIntro()-1f);
             compassParentT.DOLocalMoveY(0f, 1f).OnComplete(() =>
             {
                 Vector3 ogScale1 = compassParentT.localScale;

@@ -37,17 +37,13 @@ namespace TMKOC.Compass
         }
         public void ReduceLives()
         {
-            lives--;
-            if (lives > 0)
-            {
-                GameManager.Instance.SoundManager.PlayInCorrectAudio();
-            }
+            lives--;           
             livestext.text = "x" + lives;
             ShakeLives();
         }
         private IEnumerator InvokeLevelLoseAfterDelay()
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(2f);
             GameManager.Instance.InvokeLevelLose();
         }
         private void OnLevelStart()
