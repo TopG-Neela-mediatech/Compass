@@ -29,17 +29,47 @@ namespace TMKOC.Compass
         }
         private void Start()
         {
-            index = 7;
+            index = 0;
             RotateNeedle(GetNeedlePoint(index + 1));
             flashCardImage.sprite = directionSprite[index];
             nextButton.onClick.AddListener(LoadNextSprite);
             prevButton.onClick.AddListener(LoadPrevSprite);
-            DoFlashCardAnimation(false);
+            // DoFlashCardAnimation(false);
             DisableButtons();
+            DoIntroAnimation();
+        }
+        private void DoIntroAnimation()
+        {
+
+            prevButton.gameObject.SetActive(false);
+            nextButton.gameObject.SetActive(false);
+            frameImageT.DOLocalMoveX(-1200f, 0f);
+            compassParentT.DOLocalMoveY(0f, 1f).OnComplete(() =>
+            {
+                Vector3 ogScale1 = compassParentT.localScale;
+                Vector3 ogScale2 = needleImageTransform.localScale;
+                Tween t1 = compassParentT.DOScale(ogScale1.x + .05f, 0.5f).SetLoops(-1, LoopType.Yoyo).OnKill(() => compassParentT.localScale = ogScale1);
+                Tween t2 = needleImageTransform.DOScale(ogScale2.x + 0.1f, 0.5f).SetLoops(-1, LoopType.Yoyo).OnKill(() => needleImageTransform.localScale = ogScale2);
+                StartCoroutine(StarFlashCard(t1, t2));
+            });
+        }
+        private IEnumerator StarFlashCard(Tween tt, Tween tt2)
+        {
+            //-525f
+            float introDuration = 5f;//temp time
+            yield return new WaitForSeconds(introDuration);
+            tt.Kill();
+            tt2.Kill();
+            compassParentT.DOLocalMoveY(-525f, 1f).OnComplete(() =>
+            {
+                prevButton.gameObject.SetActive(true);
+                nextButton.gameObject.SetActive(true);
+                DoFlashCardAnimation(false);
+            });
         }
         private void AdjustSize()
         {
-            float aspectRatio = (float)Screen.width / Screen.height;           
+            float aspectRatio = (float)Screen.width / Screen.height;
             if (aspectRatio > aspectRatioThreshold)//greater here because portrait
             {
                 SetTabletSizing();
