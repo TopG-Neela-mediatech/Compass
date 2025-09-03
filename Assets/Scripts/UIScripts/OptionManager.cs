@@ -64,6 +64,7 @@ namespace TMKOC.Compass
                 optionImage.color = Color.green;
                 StartCoroutine(InvokeLevelWinAfterDelay());
                 GameManager.Instance.UIManager.PlayConfetti();
+                GameManager.Instance.SoundManager.PlayCorrectAudio();
             }
             else
             {

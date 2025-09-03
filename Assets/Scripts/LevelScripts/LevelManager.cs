@@ -40,13 +40,15 @@ namespace TMKOC.Compass
             CurrentLevelIndex++;
             if (CurrentLevelIndex >= levels.levels.Count)
             {
+                GameManager.Instance.SoundManager.PlayOutro();
 #if PLAYSCHOOL_MAIN
                     EffectParticleControll.Instance.SpawnGameEndPanel();
+                  
                     GameOverEndPanel.Instance.AddTheListnerRetryGame();
                     return;
 #endif
                 CurrentLevelIndex = 0;
-            }
+            }            
             StartLevel();
         }
         private void OnLevelStart()

@@ -2147,7 +2147,7 @@ MonoBehaviour:
   levelManager: {fileID: 1388382397}
   cShaker: {fileID: 1808765292}
   livesManager: {fileID: 1206674346}
-  soundManager: {fileID: 0}
+  soundManager: {fileID: 1635133657}
   needleRotator: {fileID: 1271578722}
 --- !u!1 &737007439
 GameObject:

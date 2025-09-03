@@ -7,13 +7,65 @@ namespace TMKOC.Compass
     {
         [SerializeField] private SoundSO englishSO;
         [SerializeField] private AudioSource levelAudioSource;
-        [SerializeField] private string audioLocalization;      
+        [SerializeField] private string audioLocalization;
         private SoundSO soundData;
 
 
         private void Awake()
         {
             SetLanguage();
+        }
+        private void Start()
+        {
+            GameManager.Instance.OnLevelStart += PlayGenericQuestions;
+            GameManager.Instance.OnLevelLose += PlayRetryAudio;
+        }
+        private void PlayLevelAudio(AudioClip clip)
+        {
+            if (clip != null)
+            {
+                levelAudioSource.PlayOneShot(clip);
+            }
+        }
+        public float PlayIntro()//for level one play intro/welcome audio
+        {
+            if (levelAudioSource.isPlaying) { levelAudioSource.Stop(); }
+            PlayLevelAudio(soundData.gameIntro);
+            return soundData.gameIntro.length;
+        }
+        public void PlayOutro()//for level one play intro/welcome audio
+        {
+            if (levelAudioSource.isPlaying) { levelAudioSource.Stop(); }
+            PlayLevelAudio(soundData.gameOutro);
+        }
+        public void PlayFlashCardAudio(int index)
+        {
+            if(levelAudioSource.isPlaying) {levelAudioSource.Stop(); }
+            PlayLevelAudio(soundData.directionAudio[index]);
+        }
+        private void PlayGenericQuestions()
+        {
+            if (levelAudioSource.isPlaying) { levelAudioSource.Stop(); }
+            int rand = UnityEngine.Random.Range(0, soundData.genericQuestionAudio.Length);
+            PlayLevelAudio(soundData.genericQuestionAudio[rand]);
+        }
+        public void PlayCorrectAudio()
+        {
+            if (levelAudioSource.isPlaying) { levelAudioSource.Stop(); }
+            int rand = UnityEngine.Random.Range(0, soundData.correctAudio.Length);
+            PlayLevelAudio(soundData.correctAudio[rand]);
+        }
+        public void PlayInCorrectAudio()
+        {
+            if (levelAudioSource.isPlaying) { levelAudioSource.Stop(); }
+            int rand = UnityEngine.Random.Range(0, soundData.incorrectAudio.Length);
+            PlayLevelAudio(soundData.incorrectAudio[rand]);
+        }
+        private void PlayRetryAudio()
+        {
+            if (levelAudioSource.isPlaying) { levelAudioSource.Stop(); }
+            int rand = UnityEngine.Random.Range(0, soundData.retryAudio.Length);
+            PlayLevelAudio(soundData.retryAudio[rand]);
         }
         private void SetLanguage()
         {
@@ -30,6 +82,11 @@ namespace TMKOC.Compass
                     soundData = englishSO;
                     break;
             }
+        }
+        private void OnDestroy()
+        {
+            GameManager.Instance.OnLevelStart -= PlayGenericQuestions;
+            GameManager.Instance.OnLevelLose -= PlayRetryAudio;
         }
     }
 }

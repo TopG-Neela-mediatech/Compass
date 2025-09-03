@@ -44,20 +44,20 @@ namespace TMKOC.Compass
             prevButton.gameObject.SetActive(false);
             nextButton.gameObject.SetActive(false);
             frameImageT.DOLocalMoveX(-1200f, 0f);
+            float duration = GameManager.Instance.SoundManager.PlayIntro();
             compassParentT.DOLocalMoveY(0f, 1f).OnComplete(() =>
             {
                 Vector3 ogScale1 = compassParentT.localScale;
                 Vector3 ogScale2 = needleImageTransform.localScale;
                 Tween t1 = compassParentT.DOScale(ogScale1.x + .05f, 0.5f).SetLoops(-1, LoopType.Yoyo).OnKill(() => compassParentT.localScale = ogScale1);
                 Tween t2 = needleImageTransform.DOScale(ogScale2.x + 0.1f, 0.5f).SetLoops(-1, LoopType.Yoyo).OnKill(() => needleImageTransform.localScale = ogScale2);
-                StartCoroutine(StarFlashCard(t1, t2));
+                StartCoroutine(StarFlashCard(t1, t2, duration));
             });
         }
-        private IEnumerator StarFlashCard(Tween tt, Tween tt2)
+        private IEnumerator StarFlashCard(Tween tt, Tween tt2, float delay)
         {
-            //-525f
-            float introDuration = 5f;//temp time
-            yield return new WaitForSeconds(introDuration);
+            //-525f           
+            yield return new WaitForSeconds(delay);
             tt.Kill();
             tt2.Kill();
             compassParentT.DOLocalMoveY(-525f, 1f).OnComplete(() =>
@@ -65,6 +65,7 @@ namespace TMKOC.Compass
                 prevButton.gameObject.SetActive(true);
                 nextButton.gameObject.SetActive(true);
                 DoFlashCardAnimation(false);
+                GameManager.Instance.SoundManager.PlayFlashCardAudio(index);
             });
         }
         private void AdjustSize()
@@ -128,6 +129,7 @@ namespace TMKOC.Compass
                 return;
             }
             flashCardImage.sprite = directionSprite[index];
+            GameManager.Instance.SoundManager.PlayFlashCardAudio(index);
             starEffect.Play();
             RotateNeedle(GetNeedlePoint(index + 1));
         }
@@ -140,6 +142,7 @@ namespace TMKOC.Compass
             }
             DoFlashCardAnimation(true);
             index--;
+            GameManager.Instance.SoundManager.PlayFlashCardAudio(index);
             flashCardImage.sprite = directionSprite[index];
             RotateNeedle(GetNeedlePoint(index + 1));
             starEffect.Play();

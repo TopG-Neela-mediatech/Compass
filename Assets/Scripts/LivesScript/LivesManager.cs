@@ -29,7 +29,7 @@ namespace TMKOC.Compass
                     return;
                 }
                 else
-                {
+                {                   
                     OnLivesReducedAnimationOver?.Invoke();
                     return;
                 }
@@ -38,6 +38,10 @@ namespace TMKOC.Compass
         public void ReduceLives()
         {
             lives--;
+            if (lives > 0)
+            {
+                GameManager.Instance.SoundManager.PlayInCorrectAudio();
+            }
             livestext.text = "x" + lives;
             ShakeLives();
         }

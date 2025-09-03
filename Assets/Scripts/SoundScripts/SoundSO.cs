@@ -11,5 +11,6 @@ namespace TMKOC.Compass
         public AudioClip[] genericQuestionAudio;
         public AudioClip[] incorrectAudio;
         public AudioClip[] correctAudio;
+        public AudioClip[] retryAudio;
     }
 }
