@@ -8,10 +8,8 @@ namespace TMKOC.Compass
         [SerializeField] private UIManager uiManager;
         [SerializeField] private LevelManager levelManager;
         [SerializeField] private CompassShaker cShaker;
-        [SerializeField] private LivesManager livesManager;
-        //[SerializeField] private SonuAnimationController sonuAnimationController;
-        //[SerializeField] private ParticleEffectManager particleEffectManager;
-        //[SerializeField] private SoundManager soundManager;
+        [SerializeField] private LivesManager livesManager;        
+        [SerializeField] private SoundManager soundManager;
         [SerializeField] private NeedleRotator needleRotator;
         private static GameManager instance;
 
@@ -22,10 +20,8 @@ namespace TMKOC.Compass
         public UIManager UIManager { get { return uiManager; } }
         public CompassShaker CompassShaker { get { return cShaker; } }
         public LivesManager LivesManager { get { return livesManager; } }
-        //public SoundManager SoundManager { get { return soundManager; } }
-        //public SonuAnimationController SonuAnimationController { get { return sonuAnimationController; } }
-        //public ParticleEffectManager ParticleEffectManager { get { return particleEffectManager; } }
-
+        public SoundManager SoundManager { get { return soundManager; } }
+       
 
         private void Awake()
         {
