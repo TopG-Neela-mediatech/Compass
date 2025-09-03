@@ -53,7 +53,7 @@ namespace TMKOC.Compass
         }
         private IEnumerator InvokeLevelWinAfterDelay()
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
             GameManager.Instance.InvokeLevelWin();
         }
         private void CheckIfCorrect()
