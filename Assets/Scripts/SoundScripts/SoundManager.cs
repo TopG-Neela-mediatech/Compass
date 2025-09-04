@@ -6,6 +6,8 @@ namespace TMKOC.Compass
     public class SoundManager : MonoBehaviour
     {
         [SerializeField] private SoundSO englishSO;
+        [SerializeField] private SoundSO hindiSO;
+        [SerializeField] private SoundSO tamilSO;
         [SerializeField] private AudioSource levelAudioSource;
         [SerializeField] private string audioLocalization;
         private SoundSO soundData;
@@ -77,6 +79,12 @@ namespace TMKOC.Compass
                     break;
                 case "EnglishUS":
                     soundData = englishSO;
+                    break;
+                case "Hindi":
+                    soundData = hindiSO;
+                    break;
+                case "Tamil":
+                    soundData = tamilSO;
                     break;
                 default:
                     soundData = englishSO;

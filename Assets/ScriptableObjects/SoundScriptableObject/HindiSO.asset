@@ -12,10 +12,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 860da91a43308a243897cc251774d9c4, type: 3}
   m_Name: HindiSO
   m_EditorClassIdentifier: 
-  gameIntro: {fileID: 0}
-  gameOutro: {fileID: 0}
-  directionAudio: []
-  genericQuestionAudio: []
-  incorrectAudio: []
-  correctAudio: []
-  retryAudio: []
+  gameIntro: {fileID: 8300000, guid: 8f95d2a8c5d1c594a95b62e57ef80b7f, type: 3}
+  gameOutro: {fileID: 8300000, guid: e7fa9f8ba479ff14fa3b73fbfb9a2d89, type: 3}
+  directionAudio:
+  - {fileID: 8300000, guid: 77eb9dca736bfbd49b9eb298c269163a, type: 3}
+  - {fileID: 8300000, guid: a0c9ef454d5d8314091cc8685d20c74e, type: 3}
+  - {fileID: 8300000, guid: fcea2988d1bc12443b368324de9a9117, type: 3}
+  - {fileID: 8300000, guid: 43ee261a7b64c264296f9d767c8d7476, type: 3}
+  - {fileID: 8300000, guid: f93680ff3d1b7fb4e816d53377fa6ef4, type: 3}
+  - {fileID: 8300000, guid: ddcb3b901a28e374e8c80da5a7419ff2, type: 3}
+  - {fileID: 8300000, guid: d1a1826972eca2f4ab08bf0db7c72c08, type: 3}
+  - {fileID: 8300000, guid: 2feb6cb9cddc4b942a8a4b92fd5adde5, type: 3}
+  genericQuestionAudio:
+  - {fileID: 8300000, guid: aaa90448a932dac4c8bfc689a42db4f7, type: 3}
+  - {fileID: 8300000, guid: 46fa30c248245de47b1e81fb632c280e, type: 3}
+  - {fileID: 8300000, guid: 71422cf3df7b41049913e00365be184e, type: 3}
+  - {fileID: 8300000, guid: 62f64ed4614963c40ad6cb02544b9f4c, type: 3}
+  - {fileID: 8300000, guid: a3d6c628f3973e44facb6227be7cc545, type: 3}
+  incorrectAudio:
+  - {fileID: 8300000, guid: a8e28547006ad454ab20a33cb1da6d9f, type: 3}
+  - {fileID: 8300000, guid: 33e017b57a4120547bc325540134c6cf, type: 3}
+  - {fileID: 8300000, guid: e664ec7b4377c9e438c54455dcb10fb4, type: 3}
+  - {fileID: 8300000, guid: 4f3c219150fe6c2498cffe8940bcb482, type: 3}
+  - {fileID: 8300000, guid: 2319d5960116d3245916a59c977ebdca, type: 3}
+  correctAudio:
+  - {fileID: 8300000, guid: efd0fb74b47b8bf458080e0a8d14e550, type: 3}
+  - {fileID: 8300000, guid: a0fc9911707335049a1ce0ba2930b8a6, type: 3}
+  - {fileID: 8300000, guid: d994e1c0556ca7b4e99d2cf20ccf8e23, type: 3}
+  - {fileID: 8300000, guid: b7b5707640f126a4292086c369eacd2a, type: 3}
+  - {fileID: 8300000, guid: 0032e120a7a5f2c4693479f60b87782b, type: 3}
+  retryAudio:
+  - {fileID: 8300000, guid: dcc93a2b5c123cd45ae192c6fa16f724, type: 3}
+  - {fileID: 8300000, guid: 28f1f698e549d0442bfb770b27da0348, type: 3}
+  - {fileID: 8300000, guid: d87879af94f61634087bbad94336aa9e, type: 3}
+  - {fileID: 8300000, guid: a7275457b48d4c44591f6fad5ed1693b, type: 3}
+  - {fileID: 8300000, guid: 01e9a1998a5d7f44c861426366c7c0cf, type: 3}
