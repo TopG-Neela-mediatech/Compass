@@ -4799,8 +4799,9 @@ MonoBehaviour:
   englishSO: {fileID: 11400000, guid: 76165daca842224448861720efd5fa5b, type: 2}
   hindiSO: {fileID: 11400000, guid: 426cae3f9ccf5f748b0a49f4883bc174, type: 2}
   tamilSO: {fileID: 11400000, guid: c88523212b710824eb6b448278af62a6, type: 2}
+  frenchSO: {fileID: 11400000, guid: 97900d3fcad910e4992cb0b37e57f153, type: 2}
   levelAudioSource: {fileID: 504067312}
-  audioLocalization: Tamil
+  audioLocalization: French
 --- !u!1 &1646932956
 GameObject:
   m_ObjectHideFlags: 0

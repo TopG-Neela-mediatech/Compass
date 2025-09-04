@@ -8,6 +8,7 @@ namespace TMKOC.Compass
         [SerializeField] private SoundSO englishSO;
         [SerializeField] private SoundSO hindiSO;
         [SerializeField] private SoundSO tamilSO;
+        [SerializeField] private SoundSO frenchSO;
         [SerializeField] private AudioSource levelAudioSource;
         [SerializeField] private string audioLocalization;
         private SoundSO soundData;
@@ -85,6 +86,9 @@ namespace TMKOC.Compass
                     break;
                 case "Tamil":
                     soundData = tamilSO;
+                    break;
+                case "French":
+                    soundData = frenchSO;
                     break;
                 default:
                     soundData = englishSO;
