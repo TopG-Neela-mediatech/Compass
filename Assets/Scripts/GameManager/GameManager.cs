@@ -33,6 +33,7 @@ namespace TMKOC.Compass
             {
                 Destroy(instance);
             }
+            Screen.orientation = ScreenOrientation.Portrait;
         }
 
 
