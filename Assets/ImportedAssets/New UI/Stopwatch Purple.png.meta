@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Stopwatch Purple_0: 6204402766062980622
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

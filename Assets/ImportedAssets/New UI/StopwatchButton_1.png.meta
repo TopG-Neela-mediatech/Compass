@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      StopwatchButton_1_0: -4222659765944222093
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

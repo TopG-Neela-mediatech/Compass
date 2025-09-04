@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      VibrationOff_0: -519581484680584032
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

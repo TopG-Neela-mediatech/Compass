@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      IslandButton_0: -548475800073911841
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

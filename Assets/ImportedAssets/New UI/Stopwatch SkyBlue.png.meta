@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Stopwatch SkyBlue_0: -3826922747936553376
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

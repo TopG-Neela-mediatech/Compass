@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PlayschoolLoading_0: 5079846720009781588
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
