@@ -9,6 +9,8 @@ namespace TMKOC.Compass
         [SerializeField] private SoundSO hindiSO;
         [SerializeField] private SoundSO tamilSO;
         [SerializeField] private SoundSO frenchSO;
+        [SerializeField] private SoundSO malayalamSO;
+        [SerializeField] private SoundSO punjabiSO;
         [SerializeField] private AudioSource levelAudioSource;
         [SerializeField] private string audioLocalization;
         private SoundSO soundData;
@@ -43,7 +45,7 @@ namespace TMKOC.Compass
         }
         public void PlayFlashCardAudio(int index)
         {
-            if(levelAudioSource.isPlaying) {levelAudioSource.Stop(); }
+            if (levelAudioSource.isPlaying) { levelAudioSource.Stop(); }
             PlayLevelAudio(soundData.directionAudio[index]);
         }
         private void PlayGenericQuestions()
@@ -89,6 +91,12 @@ namespace TMKOC.Compass
                     break;
                 case "French":
                     soundData = frenchSO;
+                    break;
+                case "Punjabi":
+                    soundData = punjabiSO;
+                    break;
+                case "Malayalam":
+                    soundData = malayalamSO;
                     break;
                 default:
                     soundData = englishSO;
