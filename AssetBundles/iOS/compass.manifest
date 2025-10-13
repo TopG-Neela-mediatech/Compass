@@ -1,16 +1,16 @@
 ManifestFileVersion: 0
 UnityVersion: 6000.0.35f1
-CRC: 2369537019
+CRC: 2813556697
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 335e65449bb6343c65cc3e163fc65172
+    Hash: 1ae621abf8c20f7ecefff9ccb5f37315
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 95bf5ff32853689ccbe1e24e7b83efa9
+    Hash: 7bec3f94192ac915bda1392a6683d14e
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 8c027b2b6501d35b494b335a3accfa59
+    Hash: 50c4c52c45a28c8e46a3e612bce436be
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -36,13 +36,13 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 860da91a43308a243897cc251774d9c4, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: d0b23cc983228634496bc287e20ddac7, type: 3}
 - Class: 114
@@ -55,8 +55,6 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 2cdcbea113a9c4099991e8fe2c9706b5, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: fade6898582f7044599acba6d4bf0323, type: 3}
 - Class: 114
@@ -77,8 +75,6 @@ ClassTypes:
   Script: {fileID: 11500000, guid: f9a6ea26e9906fe449d78a304cb814e3, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: fb4b388971a31a74b981284cb1ae2195, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 39fa3d8997a24136984ca6e2c99902bc, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
 - Class: 114
