@@ -19,8 +19,11 @@ namespace TMKOC.Compass
         [SerializeField] private TextMeshProUGUI directionNametext;
         [SerializeField] private Button nextButton;
         [SerializeField] private Button prevButton;
+        [SerializeField] private Button soundPlayingButton1;
+        [SerializeField] private Button soundPlayingButton2;
         [SerializeField] private ParticleSystem starEffect;
         private int index;
+        private bool isPlaying;
 
 
         private void Awake()
@@ -29,22 +32,24 @@ namespace TMKOC.Compass
         }
         private void Start()
         {
+            isPlaying = true;
             index = 0;
             RotateNeedle(GetNeedlePoint(index + 1));
             flashCardImage.sprite = directionSprite[index];
             nextButton.onClick.AddListener(LoadNextSprite);
             prevButton.onClick.AddListener(LoadPrevSprite);
+            soundPlayingButton1.onClick.AddListener(PlayDirectionAudio);
+            soundPlayingButton2.onClick.AddListener(PlayDirectionAudio);
             // DoFlashCardAnimation(false);
             DisableButtons();
             DoIntroAnimation();
         }
         private void DoIntroAnimation()
         {
-
             prevButton.gameObject.SetActive(false);
             nextButton.gameObject.SetActive(false);
             frameImageT.DOLocalMoveX(-1200f, 0f);
-            float duration = (GameManager.Instance.SoundManager.PlayIntro()-1f);
+            float duration = (GameManager.Instance.SoundManager.PlayIntro() - 1f);
             compassParentT.DOLocalMoveY(0f, 1f).OnComplete(() =>
             {
                 Vector3 ogScale1 = compassParentT.localScale;
@@ -65,8 +70,24 @@ namespace TMKOC.Compass
                 prevButton.gameObject.SetActive(true);
                 nextButton.gameObject.SetActive(true);
                 DoFlashCardAnimation(false);
-                GameManager.Instance.SoundManager.PlayFlashCardAudio(index);
+                float d = GameManager.Instance.SoundManager.PlayFlashCardAudio(index);
+                DOVirtual.DelayedCall(d,()=>isPlaying = false);
             });
+        }
+        private void PlayDirectionAudio()=>StartCoroutine(PlayCurrentDirectionAudio());
+        private IEnumerator PlayCurrentDirectionAudio()
+        {
+            if (!isPlaying)
+            {
+                isPlaying = true;
+                soundPlayingButton1.enabled = false;
+                soundPlayingButton2.enabled = false;
+                float d = GameManager.Instance.SoundManager.PlayFlashCardAudio(index);
+                yield return new WaitForSeconds(d);
+                isPlaying = false;
+                soundPlayingButton1.enabled=true;
+                soundPlayingButton2.enabled=true;
+            }
         }
         private void AdjustSize()
         {

@@ -44,10 +44,11 @@ namespace TMKOC.Compass
             if (levelAudioSource.isPlaying) { levelAudioSource.Stop(); }
             PlayLevelAudio(soundData.gameOutro);
         }
-        public void PlayFlashCardAudio(int index)
+        public float PlayFlashCardAudio(int index)
         {
             if (levelAudioSource.isPlaying) { levelAudioSource.Stop(); }
             PlayLevelAudio(soundData.directionAudio[index]);
+            return soundData.directionAudio[index].length;
         }
         private void PlayGenericQuestions()
         {
