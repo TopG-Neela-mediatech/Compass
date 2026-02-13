@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 860da91a43308a243897cc251774d9c4, type: 3}
+  m_Name: BengaliSO
+  m_EditorClassIdentifier: 
+  gameIntro: {fileID: 8300000, guid: 4b00a0fbef8a42246b6648f5bd38f774, type: 3}
+  gameOutro: {fileID: 8300000, guid: 15560cc675c4e7a429fb85b58597b26f, type: 3}
+  directionAudio:
+  - {fileID: 8300000, guid: 4fd1fee2a070bed44a9f64edbe06b6e3, type: 3}
+  - {fileID: 8300000, guid: aae73545e9c5a4c4e82cdcd430a459db, type: 3}
+  - {fileID: 8300000, guid: 929a573274f0c09478b8f1ba484b819e, type: 3}
+  - {fileID: 8300000, guid: 0081cd780222cc94d886e59b6be29b4c, type: 3}
+  - {fileID: 8300000, guid: 1b60df16310be5e4297795dcd5a3105a, type: 3}
+  - {fileID: 8300000, guid: 58e4b636483448e47898e741cd808f48, type: 3}
+  - {fileID: 8300000, guid: d95b947eefece9d4f9450b5f647ca547, type: 3}
+  - {fileID: 8300000, guid: 6f8c2e172cd6bc64e8faf684e31bfa0f, type: 3}
+  genericQuestionAudio:
+  - {fileID: 8300000, guid: bccd666cbcfebe341acc9b200363398a, type: 3}
+  - {fileID: 8300000, guid: 79f006a790c510a479c27923094c519e, type: 3}
+  - {fileID: 8300000, guid: 0e1c4d4703d527d45b6ab8a27481094f, type: 3}
+  - {fileID: 8300000, guid: 9c61422bddf71c84e8e1f7f52741c68f, type: 3}
+  - {fileID: 8300000, guid: b696ea59d671990468719e5cfcc3d798, type: 3}
+  incorrectAudio:
+  - {fileID: 8300000, guid: 9a15fb44d4004f4479e69de22e62abca, type: 3}
+  - {fileID: 8300000, guid: 377accbf6e3d2354a805cf67839eae33, type: 3}
+  - {fileID: 8300000, guid: 063f6c851ec94aa4f8a18245cd24fac5, type: 3}
+  - {fileID: 8300000, guid: 53cb88837f0633e43b600f30f7bb62d0, type: 3}
+  - {fileID: 8300000, guid: fbe2eefbae7bd1c4f966e2900e40493f, type: 3}
+  correctAudio:
+  - {fileID: 8300000, guid: 82c5dd37418948e449e9d6d77ecd208a, type: 3}
+  - {fileID: 8300000, guid: dc565a3a9def15a478c31ab0e4296a8b, type: 3}
+  - {fileID: 8300000, guid: 30fb6cdfe6bb7b74ba35a4ebb175240b, type: 3}
+  - {fileID: 8300000, guid: a1c0975fdfe1c3e41b6f4e275d76365e, type: 3}
+  - {fileID: 8300000, guid: c9e1fc3c1dce5e04984517f1e8e42f4e, type: 3}
+  retryAudio:
+  - {fileID: 8300000, guid: e39431020a2e4af498e6e96c839593b6, type: 3}
+  - {fileID: 8300000, guid: c4c1f0827c07f1847a79f5f97e48de4b, type: 3}
+  - {fileID: 8300000, guid: 3cd461506cf352444b5178607abaf5c1, type: 3}
+  - {fileID: 8300000, guid: 1825a47015f121f4db84794238a49da2, type: 3}
+  - {fileID: 8300000, guid: cdfb9cfb295bfbd4d8989e2954ccb443, type: 3}

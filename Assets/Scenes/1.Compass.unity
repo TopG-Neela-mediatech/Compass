@@ -4354,6 +4354,7 @@ MonoBehaviour:
   malayalamSO: {fileID: 11400000, guid: 80871359293b1fb459c5865fbd6c3605, type: 2}
   punjabiSO: {fileID: 11400000, guid: e6ef0d3aa6f669f46947d42be9eb9fdd, type: 2}
   marathiSO: {fileID: 11400000, guid: 9c94c46289a68cb45a37a4b450f989b6, type: 2}
+  bengaliSO: {fileID: 11400000, guid: 8ecb6c4aad54d014cb9ce9eaae186088, type: 2}
   levelAudioSource: {fileID: 504067312}
   audioLocalization: 
 --- !u!1 &1646932956
