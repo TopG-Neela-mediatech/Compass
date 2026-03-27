@@ -302,7 +302,7 @@ MonoBehaviour:
   selectionCategoryHolder: {fileID: 1988174654}
   loadingObject: {fileID: 355236396}
   audiofolderName:
-  - Symmetry
+  - compass
 --- !u!1 &355236396
 GameObject:
   m_ObjectHideFlags: 0

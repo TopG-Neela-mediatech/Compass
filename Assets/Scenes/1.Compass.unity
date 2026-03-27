@@ -3116,16 +3116,72 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1111111646}
   m_CullTransparentMesh: 1
---- !u!1 &1156659142 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2324686769237377240, guid: 3cdc5b77ffd23554e8a31db14b75b45f, type: 3}
-  m_PrefabInstance: {fileID: 1795469648619749838}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1156659143 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 613793525893428890, guid: 3cdc5b77ffd23554e8a31db14b75b45f, type: 3}
   m_PrefabInstance: {fileID: 1795469648619749838}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1176490079
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1176490080}
+  - component: {fileID: 1176490081}
+  m_Layer: 0
+  m_Name: AudioMapper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1176490080
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176490079}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1635133656}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1176490081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176490079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65ab95f11c032a642b181e1cc87fb86b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameIntro: Intro
+  gameOutro: Outro
+  directionAudio:
+  - North
+  - South
+  - East
+  - West
+  - NorthWest
+  - NorthEast
+  - SouthWest
+  - SouthEast
+  genericQuestionAudio:
+  - Question1
+  - Question2
+  - Question3
+  - Question4
+  - Question5
 --- !u!1 &1180568217
 GameObject:
   m_ObjectHideFlags: 0
@@ -4333,6 +4389,7 @@ Transform:
   m_Children:
   - {fileID: 1562661758}
   - {fileID: 504067311}
+  - {fileID: 1176490080}
   m_Father: {fileID: 1927533327}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1635133657
@@ -4347,16 +4404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6931ef7be1382d0449e8d8e1ef8396cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  englishSO: {fileID: 11400000, guid: 76165daca842224448861720efd5fa5b, type: 2}
-  hindiSO: {fileID: 11400000, guid: 426cae3f9ccf5f748b0a49f4883bc174, type: 2}
-  tamilSO: {fileID: 11400000, guid: c88523212b710824eb6b448278af62a6, type: 2}
-  frenchSO: {fileID: 11400000, guid: 97900d3fcad910e4992cb0b37e57f153, type: 2}
-  malayalamSO: {fileID: 11400000, guid: 80871359293b1fb459c5865fbd6c3605, type: 2}
-  punjabiSO: {fileID: 11400000, guid: e6ef0d3aa6f669f46947d42be9eb9fdd, type: 2}
-  marathiSO: {fileID: 11400000, guid: 9c94c46289a68cb45a37a4b450f989b6, type: 2}
-  bengaliSO: {fileID: 11400000, guid: 8ecb6c4aad54d014cb9ce9eaae186088, type: 2}
-  levelAudioSource: {fileID: 504067312}
-  audioLocalization: 
+  audioMapper: {fileID: 1176490081}
 --- !u!1 &1646932956
 GameObject:
   m_ObjectHideFlags: 0
@@ -4462,17 +4510,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 2
   m_TargetDisplay: 0
---- !u!114 &1666133348 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3183182113848451466, guid: 3cdc5b77ffd23554e8a31db14b75b45f, type: 3}
-  m_PrefabInstance: {fileID: 1795469648619749838}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1738981665
 GameObject:
   m_ObjectHideFlags: 0
@@ -4594,8 +4631,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   confettiPreafab: {fileID: 944908463}
-  losePanel: {fileID: 1156659142}
-  restartButton: {fileID: 1666133348}
   playSchoolBackbutton: {fileID: 806234575}
 --- !u!1 &1808765290
 GameObject:
